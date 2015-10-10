@@ -8,14 +8,16 @@
 
         <h3>Player: {{getUserName}}</h3>
 
-        <h1> Who am I?</h1>
+        <h1 class="centered"> Who am I?</h1>
 
         <form class="form-inline" role="form">
             <div class="form-group">
-                <input type="pokeName" class="form-control" id="pokeName"
+                <input type="pokeName" class="form-control center" id="pokeName"
                        placeholder="Type my name here..." ng-model="pokeName">
             </div>
-            <button ng-click="check()" class="btn btn-warning btn-lg">I choose you!</button>
+            <div class="form-group centered">
+                <button ng-click="check()" class="centered btn btn-warning btn-lg">I choose you!</button>
+            </div>
         </form>
     </div>
 

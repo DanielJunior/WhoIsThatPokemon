@@ -1,4 +1,12 @@
-.silhouette{
+.silhouette {
     filter: contrast(0%) brightness(50%);
     -webkit-filter: contrast(0%) brightness(50%);
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.smallMarginTop {
+    margin: 5%;
 }

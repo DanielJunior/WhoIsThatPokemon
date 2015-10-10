@@ -1,17 +1,17 @@
 <div class="row">
     <h1 class="centered">Welcome to our game!</h1>
 
-    <form class="form-inline centered" role="form" style="margin-top: 5%" ng-submit="submit()">
+    <form class="form-inline centered smallMarginTop" role="form" ng-submit="submit()">
         <div class="form-group">
-            <input type="nickName" class="form-control" id="nickName" ng-model="nickName"
+            <input type="nickName" class="form-control center" id="nickName" ng-model="nickName"
                    placeholder="Type your nick here..." required>
         </div>
 
         <br/>
 
-        <div class="form-group center" style="margin: 5%">
+        <div class="form-group center smallMarginTop">
             <h3 style="display: inline">Choose a generation: </h3>
-            <select id="generation" class="form-control">
+            <select id="generation" class="form-control center" >
                 <option value="7" checked>All</option>
                 <option value="1">Gen I</option>
                 <option value="2">Gen II</option>
@@ -24,6 +24,6 @@
 
         <br/>
 
-        <button class="btn btn-warning btn-lg center" type="submit">Let's go!</button>
+        <button class="btn btn-warning btn-lg center smallMarginTop" type="submit">Let's go!</button>
     </form>
 </div>
