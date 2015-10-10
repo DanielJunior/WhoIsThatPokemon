@@ -1,22 +1,26 @@
 <div class="row">
-    <p class="pull-right">Time Left: <span>XXX</span></p>
+    <div class="pull-right">
+        <p style="display: inline ;">Time Left: <span>XXX</span></p>
 
-    <p class="pull-right" style="margin-right: 2%">Score: <span>XXX</span></p>
-
+        <p style="display: inline">Score: <span>XXX</span></p>
+    </div>
     <div class="col-lg-6" style="padding-top: 10%">
+
+        <h3>Player: {{getUserName}}</h3>
+
         <h1> Who am I?</h1>
 
         <form class="form-inline" role="form">
             <div class="form-group">
                 <input type="pokeName" class="form-control" id="pokeName"
-                       placeholder="Type my name here...">
+                       placeholder="Type my name here..." ng-model="pokeName">
             </div>
-            <button type="submit" class="btn btn-warning btn-lg">I choose you!</button>
+            <button ng-click="check()" class="btn btn-warning btn-lg">I choose you!</button>
         </form>
     </div>
 
     <div class="col-lg-6" style="padding-top: 10%">
-        <img class="img-responsive" id="pokeImage" src="img/img.png" alt="">
+        <img class="img-responsive silhouette" id="pokeImage" src="img/img.png" alt="Who am I?">
     </div>
 
 </div>

@@ -1,10 +1,10 @@
 <div class="row">
     <h1 class="centered">Welcome to our game!</h1>
 
-    <form class="form-inline centered" role="form" style="margin-top: 5%">
+    <form class="form-inline centered" role="form" style="margin-top: 5%" ng-submit="submit()">
         <div class="form-group">
-            <input type="nickName" class="form-control" id="nickName"
-                   placeholder="Type your nick here...">
+            <input type="nickName" class="form-control" id="nickName" ng-model="nickName"
+                   placeholder="Type your nick here..." required>
         </div>
 
         <br/>
@@ -24,8 +24,6 @@
 
         <br/>
 
-        <a href="#/game">
-            <button class="btn btn-warning btn-lg center">Let's go!</button>
-        </a>
+        <button class="btn btn-warning btn-lg center" type="submit">Let's go!</button>
     </form>
 </div>
