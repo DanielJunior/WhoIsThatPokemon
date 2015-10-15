@@ -1,7 +1,7 @@
 /**
  * Created by danieljunior on 10/10/15.
  */
-var app = angular.module('pokeApp', ['ngRoute']);
+var app = angular.module('pokeApp', ['ngRoute', 'ngAnimate']);
 
 app.
     config(['$routeProvider', function ($routeProvider) {
@@ -12,7 +12,7 @@ app.
             })
             .when('/game', {
                 templateUrl: 'templates/game.html',
-                controller: 'MainController'
+                controller: 'GameController'
             })
             .when('/developers', {
                 templateUrl: 'templates/developers.html',
@@ -26,17 +26,3 @@ app.
                 redirectTo: '/'
             });
     }]);
-
-app.factory('UserService', function () {
-        var current_user;
-        return {
-            getCurrentUser: function () {
-                return current_user;
-            },
-            setCurrentUser: function (user) {
-                current_user = user;
-            }
-
-        }
-    }
-);
