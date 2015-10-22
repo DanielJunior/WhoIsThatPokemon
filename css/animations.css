@@ -1,0 +1,46 @@
+
+/*ANIMATIONS*/
+.container.ng-enter,
+.container.ng-leave {
+    transition: 0.5s linear all;
+    -webkit-transition: 0.5s linear all;
+}
+
+.container.ng-enter {
+    opacity: 0;
+    /*color: green;*/
+}
+.container.ng-enter.ng-enter-active {
+    opacity: 1;
+    /*color: black;*/
+}
+.container.ng-leave {}
+.container.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+@keyframes animateView-enter {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+@-webkit-keyframes animateView-enter {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+@keyframes animateView-leave {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+@-webkit-keyframes animateView-leave {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+.animateView.ng-enter {
+    -webkit-animation: 0.5s animateView-enter;
+    animation: 0.5s animateView-enter;
+}
+.animateView.ng-leave {
+    -webkit-animation: 0.5s animateView-leave;
+    animation: 0.5s animateView-leave;
+}
