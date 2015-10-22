@@ -10,13 +10,4 @@ app.controller('MainController', function ($scope, $location, UserService) {
         UserService.setCurrentUser($scope.nickName);
         $location.path('/game');
     };
-
-    $scope.check = function () {
-        $('#pokeImage').removeClass('silhouette');
-        alert("You are correct!");
-    };
-
-    $scope.getUserName = UserService.getCurrentUser();
-
-
 });

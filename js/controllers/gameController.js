@@ -20,6 +20,7 @@ app.controller('GameController', function ($scope, $location, UserService, PokeS
             if ($scope.tries == 0) {
                 $('#myModal').modal();
                 //$location.path("/");
+
             } else {
                 alert("You are wrong... Left " + $scope.tries + " tries.");
                 $scope.reload();
