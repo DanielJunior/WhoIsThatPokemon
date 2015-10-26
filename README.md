@@ -1,1 +1,1 @@
-This web application is a evolution from another located in https://github.com/IgorSFA/Who-is-that-Pokemon.
+See this application working here -> http://danieljunior.github.io/WhoIsThatPokemon/
