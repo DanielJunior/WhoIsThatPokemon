@@ -8,6 +8,8 @@ app.factory('PokeService', function ($http) {
     var url = "http://pokeapi.co/";
     var service = "api/v1/pokemon/";
     var media = "media/img/";
+    var name="";
+    var img="";
     var genNumbers = {
         0: [1, 721],
         1: [1, 151],
@@ -27,27 +29,27 @@ app.factory('PokeService', function ($http) {
     return {
         getNewPokemon: function () {
             var number = randomNumber(gen);
-            var resp = {};
+            img = url + "media/img/" + number + ".png";
             var request = url + service + number + "/";
-            //$http.get(request)
-            //    .success(function (data) {
-            //        var poke_image = url + "media/img/" + number + ".png";
-            //        var poke_name = data.name.toLowerCase();
-            //        resp["name"] = poke_name;
-            //        resp["img"] = poke_image;
-            //    })
-            //    .error(function () {
-            //        console.log("Error retrieving pokemon data")
-            //        resp["name"] = "default";
-            //        resp["img"] = "img/pokemon.jpg";
-            //    });
-            //console.log(resp);
-            resp["name"] = "default";
-            resp["img"] = "img/pokemon.jpg";
-            return resp;
+            $http.get(request)
+                .success(function (data) {
+                    var poke_name = data.name.toUpperCase();
+                    name = poke_name;
+                })
+                .error(function () {
+                    console.log("Error retrieving pokemon data")
+                    name = "default";
+                    img = "img/pokemon.jpg";
+                });
         },
         setGens: function (value) {
             gen.push(genNumbers[value]);
+        },
+        getPokemonName: function(){
+            return name;
+        },
+        getPokemonImage: function(){
+            return img;
         }
     }
 });

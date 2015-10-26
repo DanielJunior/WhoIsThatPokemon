@@ -7,7 +7,7 @@ app.controller('MainController', function ($scope, $location, UserService, PokeS
     $scope.pokeName = "";
     $scope.submit = function () {
         UserService.setCurrentUser($scope.nickName);
-        PokeService.setGens($scope.gen)
+        PokeService.setGens($scope.gen);
         $location.path('/game');
     };
 });

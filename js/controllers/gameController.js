@@ -2,17 +2,16 @@
  * Created by danieljunior on 15/10/15.
  */
 app.controller('GameController', function ($scope, $location, UserService, PokeService) {
-
-    var pokemon = PokeService.getNewPokemon();
-    $scope.pokeName = pokemon.name;
-    $scope.pokeImage = pokemon.img;
+    PokeService.getNewPokemon();
+    $scope.pokeName = PokeService.getPokemonName();
+    $scope.pokeImage = PokeService.getPokemonImage();
     $scope.resp = "";
     $scope.tries = 3;
     $scope.score = 0;
     $scope.check = function () {
         $('#pokeImage').removeClass('silhouette');
         $('#pokeName').removeClass('hidden');
-        if ($scope.resp == $scope.pokeName) {
+        if ($scope.resp.toUpperCase() == $scope.pokeName) {
             alert("You are correct!");
             $scope.score += 100;
             $scope.reload();
@@ -31,12 +30,12 @@ app.controller('GameController', function ($scope, $location, UserService, PokeS
     };
 
     $scope.reload = function () {
-        pokemon = PokeService.getNewPokemon();
+        PokeService.getNewPokemon();
         $scope.resp = "";
         $('#pokeImage').addClass('silhouette');
         $('#pokeName').addClass('hidden');
-        $scope.pokeName = pokemon.name;
-        $scope.pokeImage = pokemon.image;
+        $scope.pokeName = PokeService.getPokemonName();
+        $scope.pokeImage = PokeService.getPokemonImage();
     };
 
     $scope.getUserName = UserService.getCurrentUser();
