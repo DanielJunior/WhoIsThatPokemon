@@ -3,24 +3,26 @@
  */
 app.controller('GameController', function ($scope, $location, UserService, PokeService) {
 
-    $scope.pokeName = PokeService.getNewPokemonName();
-    $scope.pokeImage = PokeService.getNewPokemonImage();
+    var pokemon = PokeService.getNewPokemon();
+    $scope.pokeName = pokemon.name;
+    $scope.pokeImage = pokemon.img;
     $scope.resp = "";
     $scope.tries = 3;
     $scope.score = 0;
     $scope.check = function () {
         $('#pokeImage').removeClass('silhouette');
+        $('#pokeName').removeClass('hidden');
         if ($scope.resp == $scope.pokeName) {
             alert("You are correct!");
-            $scope.score += 10;
+            $scope.score += 100;
             $scope.reload();
         } else {
+            $scope.score -= 50;
             $scope.tries -= 1;
-            console.log($scope.tries);
-            if ($scope.tries == 0) {
-                $('#myModal').modal();
-                //$location.path("/");
-
+            if ($scope.tries <= 0) {
+                //$('#myModal').modal();
+                alert("Game Over!");
+                $location.path("/");
             } else {
                 alert("You are wrong... Left " + $scope.tries + " tries.");
                 $scope.reload();
@@ -29,10 +31,12 @@ app.controller('GameController', function ($scope, $location, UserService, PokeS
     };
 
     $scope.reload = function () {
+        pokemon = PokeService.getNewPokemon();
         $scope.resp = "";
         $('#pokeImage').addClass('silhouette');
-        $scope.pokeName = PokeService.getNewPokemonName();
-        $scope.pokeImage = PokeService.getNewPokemonImage();
+        $('#pokeName').addClass('hidden');
+        $scope.pokeName = pokemon.name;
+        $scope.pokeImage = pokemon.image;
     };
 
     $scope.getUserName = UserService.getCurrentUser();

@@ -11,7 +11,6 @@ app.factory('UserService', function () {
             setCurrentUser: function (user) {
                 current_user = user;
             }
-
         }
     }
 );
