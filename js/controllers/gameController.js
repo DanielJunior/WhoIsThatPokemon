@@ -3,9 +3,7 @@
  */
 app.controller('GameController', function ($scope, $location, UserService, PokeService) {
     if (UserService.getCurrentUser() != "") {
-        PokeService.getNewPokemon();
-        $scope.pokeName = PokeService.getPokemonName();
-        $scope.pokeImage = PokeService.getPokemonImage();
+        getPokemonData();
         $scope.resp = "";
         $scope.tries = 3;
         $scope.score = 0;
@@ -17,7 +15,9 @@ app.controller('GameController', function ($scope, $location, UserService, PokeS
                 $scope.score += 100;
                 $scope.reload();
             } else {
-                $scope.score -= 50;
+                if ($scope.score > 0) {
+                    $scope.score -= 50;
+                }
                 $scope.tries -= 1;
                 if ($scope.tries <= 0) {
                     //$('#myModal').modal();
@@ -31,15 +31,25 @@ app.controller('GameController', function ($scope, $location, UserService, PokeS
         };
 
         $scope.reload = function () {
-            PokeService.getNewPokemon();
+            getPokemonData();
             $scope.resp = "";
             $('#pokeImage').addClass('silhouette');
             $('#pokeName').addClass('hidden');
-            $scope.pokeName = PokeService.getPokemonName();
-            $scope.pokeImage = PokeService.getPokemonImage();
         };
 
         $scope.getUserName = UserService.getCurrentUser();
+
+        function getPokemonData() {
+            var pokemon = PokeService.getNewPokemon();
+            $scope.pokeImage = PokeService.getPokemonImage();
+            pokemon.then(
+                function (data) {
+                    $scope.pokeName = data.name.toUpperCase();
+                },
+                function (errorData) {
+                    //$log.error('failure loading movie', errorPayload);
+                });
+        };
     } else {
         alert("You will be redirect to home page.");
         $location.path('/');

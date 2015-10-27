@@ -3,13 +3,14 @@
  */
 
 
-app.factory('PokeService', function ($http) {
+app.factory('PokeService', function ($http, $q) {
     var gen = [];
     var url = "http://pokeapi.co/";
     var service = "api/v1/pokemon/";
     var media = "media/img/";
-    var name="";
-    var img="";
+    var name = "";
+    var img = "";
+    var r = [];
     var genNumbers = {
         0: [1, 721],
         1: [1, 151],
@@ -28,27 +29,31 @@ app.factory('PokeService', function ($http) {
 
     return {
         getNewPokemon: function () {
+            var defer = $q.defer();
             var number = randomNumber(gen);
             img = url + "media/img/" + number + ".png";
             var request = url + service + number + "/";
             $http.get(request)
                 .success(function (data) {
                     var poke_name = data.name.toUpperCase();
-                    name = poke_name;
+                    r.push(poke_name);
+                    r.push(img);
+                    defer.resolve(data);
                 })
                 .error(function () {
                     console.log("Error retrieving pokemon data")
                     name = "default";
                     img = "img/pokemon.jpg";
                 });
+            return defer.promise;
         },
         setGens: function (value) {
             gen.push(genNumbers[value]);
         },
-        getPokemonName: function(){
+        getPokemonName: function () {
             return name;
         },
-        getPokemonImage: function(){
+        getPokemonImage: function () {
             return img;
         }
     }
