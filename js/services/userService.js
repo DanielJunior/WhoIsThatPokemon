@@ -3,7 +3,7 @@
  */
 
 app.factory('UserService', function () {
-        var current_user;
+        var current_user="";
         return {
             getCurrentUser: function () {
                 return current_user;
