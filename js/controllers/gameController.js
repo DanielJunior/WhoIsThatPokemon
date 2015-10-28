@@ -21,7 +21,9 @@ app.controller('GameController', function ($scope, $location, UserService, PokeS
                 $scope.tries -= 1;
                 if ($scope.tries <= 0) {
                     //$('#myModal').modal();
-                    alert("Game Over! Your score: "+$scope.score);
+                    alert("Game Over! Your score: " + $scope.score);
+                    UserService.setUserScore($scope.score);
+                    UserService.save();
                     $location.path("/");
                 } else {
                     alert("You are wrong... Left " + $scope.tries + " tries.");
