@@ -26,3 +26,12 @@ app.
                 redirectTo: '/'
             });
     }]);
+app.config(['$httpProvider', function ($httpProvider) {
+    //Reset headers to avoid OPTIONS request (aka preflight)
+    $httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+
+}]);
