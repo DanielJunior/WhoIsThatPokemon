@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-primary" ng-show="ranking.length > 0">
     <div class="panel-heading">
         <h3 class="panel-title">Ranking</h3>
     </div>
@@ -6,15 +6,12 @@
         <th>Player</th>
         <th>Country</th>
         <th>Score</th>
-        <tr>
-            <td>Player A</td>
-            <td>Brazil</td>
-            <td>200</td>
-        </tr>
-        <tr>
-            <td>Player A</td>
-            <td>Brazil</td>
-            <td>200</td>
+        <tr ng-repeat="user in ranking">
+            <td>{{user.name}}</td>
+            <td>{{user.country}}</td>
+            <td>{{user.score}}</td>
         </tr>
     </table>
 </div>
+
+<div class="alert alert-danger" role="alert" ng-show="ranking.length <= 0"><strong>Ranking vazio!</strong> Seja o primeiro!</div>

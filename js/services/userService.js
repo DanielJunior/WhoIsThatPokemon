@@ -2,11 +2,11 @@
  * Created by danieljunior on 15/10/15.
  */
 
-app.factory('UserService', function ($http) {
-        var current_user="";
+app.factory('UserService', function ($http, $q) {
+        var current_user = "";
         var score;
         var country;
-        var server = "http://localhost:3000/saveUser";
+        var server = "http://localhost:3000/";
         return {
             getCurrentUser: function () {
                 return current_user;
@@ -14,21 +14,32 @@ app.factory('UserService', function ($http) {
             setCurrentUser: function (user) {
                 current_user = user;
             },
-            setUserScore: function(s){
+            setUserScore: function (s) {
                 score = s;
             },
-            setUserCountry: function(c){
+            setUserCountry: function (c) {
                 country = c;
             },
-            save: function(){
+            save: function () {
                 var data = {
                     name: current_user,
                     score: score,
                     country: country
                 };
-                $http.post(server,data).success(function(data){
+                $http.post(server + "saveUser", data).success(function (data) {
                     console.log("Data sended!");
                 });
+            },
+            getRanking: function () {
+                var defer = $q.defer();
+                var resp;
+                $http.get(server + "list.json")
+                    .success(function (response) {
+                        //resp = response;
+                        //console.log(response);
+                        defer.resolve(response);
+                    });
+                 return defer.promise;
             }
         }
     }
