@@ -6,7 +6,8 @@ app.factory('UserService', function ($http, $q) {
         var current_user = "";
         var score;
         var country;
-        var server = "http://localhost:3000/";
+        //var server = "http://localhost:3000/";
+        var server = "https://whoisthatpokemon.herokuapp.com/";
         return {
             getCurrentUser: function () {
                 return current_user;
