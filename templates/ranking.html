@@ -1,12 +1,14 @@
 <div class="panel panel-primary" ng-show="ranking.length > 0">
     <div class="panel-heading">
-        <h3 class="panel-title">Ranking</h3>
+        <h2 class="panel-title">Ranking</h2>
     </div>
     <table class="table table-bordered table-responsive">
+        <th>#</th>
         <th>Player</th>
         <th>Country</th>
         <th>Score</th>
-        <tr ng-repeat="user in ranking">
+        <tr ng-repeat="user in ranking | orderBy: '-score'">
+            <td>{{ $index + 1 }}</td>
             <td>{{user.name}}</td>
             <td>{{user.country}}</td>
             <td>{{user.score}}</td>
