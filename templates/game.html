@@ -1,32 +1,48 @@
 <div class="row">
-    <div class="pull-right" style="margin-right: 2%">
-        <!--TODO implementar cronometro do jogo-->
-        <!--<p style="display: inline ;">Time Left: <span>XXX</span></p>-->
+    <div class="col-xs-10">
+        <div class="pull-right" style="margin-right: 20%">
+            <!--TODO implementar cronometro do jogo-->
+            <!--<p style="display: inline ;">Time Left: <span>XXX</span></p>-->
 
-        <p style="display: inline">Score: <span>{{score}}</span></p>
+            <p style="display: inline">Score: <span>{{score}}</span></p>
+        </div>
+        <div class="col-lg-4" style="padding-top: 10%">
+
+            <h3>Player: {{getUserName}}</h3>
+
+            <h1> Who am I?</h1>
+
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <input type="pokeName" class="form-control center" id="resp"
+                           placeholder="Type my name here..." ng-model="resp">
+                </div>
+                <div class="form-group centered" style="margin-top: 2%">
+                    <button ng-click="check()" class="centered btn btn-warning btn-lg">I choose you!</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-lg-6" style="padding-top: 10%; margin-bottom: 5%">
+            <img class="img-responsive silhouette center" id="pokeImage" width="50%" ng-src="{{ pokeImage }}"
+                 alt="Who am I?">
+
+            <h3 id="pokeName" class="hidden">My name is {{pokeName}}</h3>
+        </div>
     </div>
-    <div class="col-lg-6" style="padding-top: 10%">
+    <div class="col-xs-2">
 
-        <h3>Player: {{getUserName}}</h3>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- ranking-page -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9617205036035168"
+             data-ad-slot="9511612931"
+             data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
 
-        <h1> Who am I?</h1>
-
-        <form class="form-inline" role="form">
-            <div class="form-group">
-                <input type="pokeName" class="form-control center" id="resp"
-                       placeholder="Type my name here..." ng-model="resp">
-            </div>
-            <div class="form-group centered">
-                <button ng-click="check()" class="centered btn btn-warning btn-lg">I choose you!</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="col-lg-6" style="padding-top: 10%; margin-bottom: 5%">
-        <img class="img-responsive silhouette center" id="pokeImage" width="50%" ng-src="{{ pokeImage }}"
-             alt="Who am I?">
-
-        <h3 id="pokeName" class="hidden">My name is {{pokeName}}</h3>
     </div>
 
 </div>

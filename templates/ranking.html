@@ -1,19 +1,40 @@
-<div class="panel panel-primary" ng-show="ranking.length > 0">
-    <div class="panel-heading">
-        <h2 class="panel-title">Ranking</h2>
-    </div>
-    <table class="table table-bordered table-responsive">
-        <th>#</th>
-        <th>Player</th>
-        <th>Country</th>
-        <th>Score</th>
-        <tr ng-repeat="user in ranking | orderBy: '-score'">
-            <td>{{ $index + 1 }}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.country}}</td>
-            <td>{{user.score}}</td>
-        </tr>
-    </table>
-</div>
+<div class="row">
+    <div class="col-xs-10">
+        <div class="panel panel-primary" ng-show="ranking.length > 0">
+            <div class="panel-heading">
+                <h2 class="panel-title">Ranking</h2>
+            </div>
+            <table class="table table-bordered table-responsive">
+                <th>#</th>
+                <th>Player</th>
+                <th>Country</th>
+                <th>Score</th>
+                <tr ng-repeat="user in ranking | orderBy: '-score'">
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.country}}</td>
+                    <td>{{user.score}}</td>
+                </tr>
+            </table>
+        </div>
 
-<div class="alert alert-danger" role="alert" ng-show="ranking.length <= 0"><strong>Ranking vazio!</strong> Seja o primeiro!</div>
+        <div class="alert alert-danger" role="alert" ng-show="ranking.length <= 0"><strong>Ranking vazio!</strong> Seja
+            o primeiro!
+        </div>
+    </div>
+
+    <div class="col-xs-2">
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- game-page -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9617205036035168"
+             data-ad-slot="2686350138"
+             data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+    </div>
+</div>
